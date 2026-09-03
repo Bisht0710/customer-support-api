@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Form
 from fastapi.responses import HTMLResponse
@@ -102,7 +103,7 @@ def get_ticket(ticket_id: int):
 def web_submit(
     title: str = Form(...),
     description: str = Form(...),
-    status: str = Form(...),
+    status: Literal["Open", "In Progress", "Closed"] = Form(...),
     tags: str = Form("")
 ):
 
